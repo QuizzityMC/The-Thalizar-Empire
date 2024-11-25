@@ -9,15 +9,28 @@
 <body>
     <div class="portal-container">
         <h1>Thalizar Citizen Portal</h1>
-        <form id="login-form" onsubmit="handleLogin(event)">
+        <form id="login-form">
             <input type="text" id="username" placeholder="Enter your Minecraft username" required>
             <button type="submit">Enter Portal</button>
         </form>
         <div id="portal-actions" style="display: none;">
             <h2 id="welcome-message"></h2>
-            <button onclick="handleRequest('Building Permit')">Request Building Permit</button>
-            <button onclick="handleRequest('Citizenship')">Request Citizenship</button>
+            <button id="show-building-permit">Request Building Permit</button>
+            <button id="show-citizenship">Request Citizenship</button>
         </div>
+        <form id="building-permit-form" style="display: none;">
+            <h3>Building Permit Request</h3>
+            <input type="text" id="build-location" placeholder="Build Location" required>
+            <textarea id="build-description" placeholder="Describe your planned build" required></textarea>
+            <button type="submit">Submit Building Permit Request</button>
+        </form>
+        <form id="citizenship-form" style="display: none;">
+            <h3>Citizenship Request</h3>
+            <input type="text" id="real-name" placeholder="Your Real Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="reason" placeholder="Why do you want to become a citizen?" required></textarea>
+            <button type="submit">Submit Citizenship Request</button>
+        </form>
     </div>
     <nav>
         <a href="index.html">Home</a>
