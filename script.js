@@ -42,3 +42,75 @@ function handleRequest(type) {
     alert(`Your ${type} request has been submitted!`);
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('login-form');
+    const portalActions = document.getElementById('portal-actions');
+    const welcomeMessage = document.getElementById('welcome-message');
+    const showBuildingPermit = document.getElementById('show-building-permit');
+    const showCitizenship = document.getElementById('show-citizenship');
+    const buildingPermitForm = document.getElementById('building-permit-form');
+    const citizenshipForm = document.getElementById('citizenship-form');
+
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        if (username) {
+            loginForm.style.display = 'none';
+            portalActions.style.display = 'block';
+            welcomeMessage.textContent = `Welcome, ${username}!`;
+        }
+    });
+
+    showBuildingPermit.addEventListener('click', () => {
+        buildingPermitForm.style.display = 'block';
+        citizenshipForm.style.display = 'none';
+    });
+
+    showCitizenship.addEventListener('click', () => {
+        citizenshipForm.style.display = 'block';
+        buildingPermitForm.style.display = 'none';
+    });
+
+    buildingPermitForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const location = document.getElementById('build-location').value;
+        const description = document.getElementById('build-description').value;
+        sendDiscordMessage('Building Permit Request', { username, location, description });
+        alert('Your building permit request has been submitted!');
+        buildingPermitForm.reset();
+    });
+
+    citizenshipForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const realName = document.getElementById('real-name').value;
+        const email = document.getElementById('email').value;
+        const reason = document.getElementById('reason').value;
+        sendDiscordMessage('Citizenship Request', { username, realName, email, reason });
+        alert('Your citizenship request has been submitted!');
+        citizenshipForm.reset();
+    });
+});
+
+function sendDiscordMessage(type, data) {
+    // Simulate sending a message to Discord
+    console.log(`Sending ${type} to Discord:`);
+    console.log(JSON.stringify(data, null, 2));
+    
+    // In a real application, you would make an HTTP request to a server
+    // that would then use a Discord bot to send the message.
+    // For example:
+    // 
+    // fetch('https://your-server.com/send-discord-message', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ type, data }),
+    // })
+    // .then(response => response.json())
+    // .then(result => console.log('Message sent:', result))
+    // .catch(error => console.error('Error:', error));
+}
+
