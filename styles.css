@@ -136,6 +136,39 @@ nav a:hover {
     margin-bottom: 1rem;
 }
 
+.portal-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.portal-container input,
+.portal-container textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.portal-container textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.portal-container button {
+    background-color: #006400;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.portal-container button:hover {
+    background-color: #008000;
+}
+
 /* Styles for news.html */
 .news-container {
     background-color: rgba(255, 255, 255, 0.9);
