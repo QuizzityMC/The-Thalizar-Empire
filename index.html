@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit The Thalizar Empire</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="images/thalizar-flag.svg" alt="Thalizar Empire Flag" class="flag">
+        <h1>Visit The Thalizar Empire</h1>
+    </header>
+    
+    <main>
+        <section class="attractions">
+            <h2>Key Attractions</h2>
+            <div class="attraction-grid">
+                <button onclick="showAttraction('Grand Palace')">Grand Palace</button>
+                <button onclick="showAttraction('Mystic Gardens')">Mystic Gardens</button>
+                <button onclick="showAttraction('Ancient Library')">Ancient Library</button>
+                <button onclick="showAttraction('Celestial Observatory')">Celestial Observatory</button>
+            </div>
+        </section>
+    </main>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="portal.html">Citizen Portal</a>
+        <a href="news.html">Thalizar Times</a>
+    </nav>
+
+    <div id="attraction-popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2 id="attraction-title"></h2>
+            <p id="attraction-description"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

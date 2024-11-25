@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thalizar Citizen Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="portal-container">
+        <h1>Thalizar Citizen Portal</h1>
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <input type="text" id="username" placeholder="Enter your Minecraft username" required>
+            <button type="submit">Enter Portal</button>
+        </form>
+        <div id="portal-actions" style="display: none;">
+            <h2 id="welcome-message"></h2>
+            <button onclick="handleRequest('Building Permit')">Request Building Permit</button>
+            <button onclick="handleRequest('Citizenship')">Request Citizenship</button>
+        </div>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="portal.html">Citizen Portal</a>
+        <a href="news.html">Thalizar Times</a>
+    </nav>
+    <script src="script.js"></script>
+</body>
+</html>
+
