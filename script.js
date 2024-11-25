@@ -17,8 +17,8 @@ function closePopup() {
 function getAttractionDescription(attraction) {
     const descriptions = {
         'Grand Palace': 'The majestic Grand Palace of Thalizar, home to the royal family and center of government.',
-        'Mystic Gardens': 'A serene oasis filled with rare and magical plants from across the empire.',
-        'Ancient Library': 'Housing countless scrolls and tomes, the Ancient Library is a treasure trove of knowledge.',
+        'Parliament': 'The heart of the government of Thalizar - the peoples decisionmaking power!',
+        'Cities': 'Thalizar contains some cities as old as the world itself - centers of culture, religeon and trade.',
         'Celestial Observatory': 'Gaze up at the dark and powerful castles the grace the heights of the mountains.'
     };
     return descriptions[attraction] || 'Description not available.';
