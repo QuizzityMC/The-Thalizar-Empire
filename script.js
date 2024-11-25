@@ -37,7 +37,6 @@ function handleLogin(event) {
 function handleRequest(type) {
     const username = document.getElementById('username').value;
     console.log(`${type} requested for user: ${username}`);
-    // Here you would typically send this data to your game server or Discord bot
     alert(`Your ${type} request has been submitted!`);
 }
 
@@ -93,23 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function sendDiscordMessage(type, data) {
-    // Simulate sending a message to Discord
     console.log(`Sending ${type} to Discord:`);
     console.log(JSON.stringify(data, null, 2));
     
-    // In a real application, you would make an HTTP request to a server
-    // that would then use a Discord bot to send the message.
-    // For example:
-    // 
-    // fetch('https://your-server.com/send-discord-message', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ type, data }),
-    // })
-    // .then(response => response.json())
-    // .then(result => console.log('Message sent:', result))
-    // .catch(error => console.error('Error:', error));
-}
 
