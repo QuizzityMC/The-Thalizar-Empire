@@ -19,12 +19,11 @@ function getAttractionDescription(attraction) {
         'Grand Palace': 'The majestic Grand Palace of Thalizar, home to the royal family and center of government.',
         'Mystic Gardens': 'A serene oasis filled with rare and magical plants from across the empire.',
         'Ancient Library': 'Housing countless scrolls and tomes, the Ancient Library is a treasure trove of knowledge.',
-        'Celestial Observatory': 'Gaze at the stars and unravel the mysteries of the cosmos at the Celestial Observatory.'
+        'Celestial Observatory': 'Gaze up at the dark and powerful castles the grace the heights of the mountains.'
     };
     return descriptions[attraction] || 'Description not available.';
 }
 
-// For portal.html
 function handleLogin(event) {
     event.preventDefault();
     const username = document.getElementById('username').value;
