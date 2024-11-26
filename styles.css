@@ -168,7 +168,6 @@ nav a:hover {
     background-color: #008000;
 }
 
-/* Styles for news.html */
 .news-body {
     display: flex;
     flex-direction: column;
