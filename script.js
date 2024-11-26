@@ -32,6 +32,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const showCitizenship = document.getElementById('show-citizenship');
     const buildingPermitForm = document.getElementById('building-permit-form');
     const citizenshipForm = document.getElementById('citizenship-form');
+    const errorMessage = document.getElementById('error-message');
+    const authMessage = document.getElementById('auth-message');
+
+    // Check for authentication response
+    const urlParams = new URLSearchParams(window.location.search);
+    const authStatus = urlParams.get('auth');
+    if (authStatus === 'success') {
+        authMessage.textContent = 'Authentication successful!';
+        authMessage.style.color = 'green';
+        authMessage.style.display = 'block';
+    } else if (authStatus === 'error') {
+        authMessage.textContent = 'Authentication failed. Please try again.';
+        authMessage.style.color = 'red';
+        authMessage.style.display = 'block';
+    }
 
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -59,8 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const location = document.getElementById('build-location').value;
         const description = document.getElementById('build-description').value;
         sendDiscordMessage('Building Permit Request', { username, location, description });
-        alert('Your building permit request has been submitted!');
-        buildingPermitForm.reset();
     });
 
     citizenshipForm.addEventListener('submit', (e) => {
@@ -70,31 +83,38 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = document.getElementById('email').value;
         const reason = document.getElementById('reason').value;
         sendDiscordMessage('Citizenship Request', { username, realName, email, reason });
-        alert('Your citizenship request has been submitted!');
-        citizenshipForm.reset();
     });
 });
 
 function sendDiscordMessage(type, data) {
-    fetch('http://bot.quizzitymc.hackclub.app/send-discord-message', {
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.style.display = 'none';
+
+    fetch('https://bot.quizzitymc.hackclub.app/send-discord-message', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ type, data }),
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
     .then(result => {
         console.log('Message sent:', result);
         if (result.success) {
             alert('Your request has been sent successfully!');
         } else {
-            alert('There was an error sending your request. Please try again later.');
+            throw new Error(result.message || 'Unknown error occurred');
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('There was an error sending your request. Please try again later.');
+        errorMessage.textContent = `Error: ${error.message}. Please try again later.`;
+        errorMessage.style.display = 'block';
     });
 }
 
