@@ -19,26 +19,9 @@ function getAttractionDescription(attraction) {
         'Grand Palace': 'The majestic Grand Palace of Thalizar, home to the royal family and center of government.',
         'Mystic Gardens': 'A serene oasis filled with rare and magical plants from across the empire.',
         'Ancient Library': 'Housing countless scrolls and tomes, the Ancient Library is a treasure trove of knowledge.',
-        'Celestial Observatory': 'Gaze up at the dark and powerful castles the grace the heights of the mountains.'
+        'Celestial Observatory': 'Gaze at the stars and unravel the mysteries of the cosmos at the Celestial Observatory.'
     };
     return descriptions[attraction] || 'Description not available.';
-}
-
-function handleLogin(event) {
-    event.preventDefault();
-    const username = document.getElementById('username').value;
-    if (username) {
-        document.getElementById('login-form').style.display = 'none';
-        document.getElementById('portal-actions').style.display = 'block';
-        document.getElementById('welcome-message').textContent = `Welcome, ${username}!`;
-    }
-}
-
-function handleRequest(type) {
-    const username = document.getElementById('username').value;
-    console.log(`${type} requested for user: ${username}`);
-    // Here you would typically send this data to your game server or Discord bot
-    alert(`Your ${type} request has been submitted!`);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -93,22 +76,25 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function sendDiscordMessage(type, data) {
-    // Simulate sending a message to Discord
-    console.log(`Sending ${type} to Discord:`);
-    console.log(JSON.stringify(data, null, 2));
-    
-    // In a real application, you would make an HTTP request to a server
-    // that would then use a Discord bot to send the message.
-    // For example:
-    // 
-    // fetch('https://your-server.com/send-discord-message', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ type, data }),
-    // })
-    // .then(response => response.json())
-    // .then(result => console.log('Message sent:', result))
-    // .catch(error => console.error('Error:', error));
+    fetch('http://localhost:3000/send-discord-message', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ type, data }),
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log('Message sent:', result);
+        if (result.success) {
+            alert('Your request has been sent successfully!');
+        } else {
+            alert('There was an error sending your request. Please try again later.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('There was an error sending your request. Please try again later.');
+    });
 }
+
