@@ -17,9 +17,9 @@ function closePopup() {
 function getAttractionDescription(attraction) {
     const descriptions = {
         'Grand Palace': 'The majestic Grand Palace of Thalizar, home to the royal family and center of government.',
-        'Parliament': 'The heart of the government of Thalizar - the peoples decisionmaking power!',
-        'Cities': 'Thalizar contains some cities as old as the world itself - centers of culture, religeon and trade.',
-        'Castle': 'Gaze up at the dark and powerful castles the grace the heights of the mountains.'
+        'Mystic Gardens': 'A serene oasis filled with rare and magical plants from across the empire.',
+        'Ancient Library': 'Housing countless scrolls and tomes, the Ancient Library is a treasure trove of knowledge.',
+        'Celestial Observatory': 'Gaze up at the dark and powerful castles the grace the heights of the mountains.'
     };
     return descriptions[attraction] || 'Description not available.';
 }
@@ -37,6 +37,7 @@ function handleLogin(event) {
 function handleRequest(type) {
     const username = document.getElementById('username').value;
     console.log(`${type} requested for user: ${username}`);
+    // Here you would typically send this data to your game server or Discord bot
     alert(`Your ${type} request has been submitted!`);
 }
 
@@ -92,7 +93,22 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function sendDiscordMessage(type, data) {
+    // Simulate sending a message to Discord
     console.log(`Sending ${type} to Discord:`);
     console.log(JSON.stringify(data, null, 2));
     
-
+    // In a real application, you would make an HTTP request to a server
+    // that would then use a Discord bot to send the message.
+    // For example:
+    // 
+    // fetch('https://your-server.com/send-discord-message', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ type, data }),
+    // })
+    // .then(response => response.json())
+    // .then(result => console.log('Message sent:', result))
+    // .catch(error => console.error('Error:', error));
+}
