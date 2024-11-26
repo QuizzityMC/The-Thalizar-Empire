@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function sendDiscordMessage(type, data) {
-    fetch('http://localhost:3000/send-discord-message', {
+    fetch('http://bot.quizzitymc.hackclub.app/send-discord-message', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
