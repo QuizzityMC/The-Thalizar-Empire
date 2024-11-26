@@ -170,22 +170,30 @@ nav a:hover {
 }
 
 /* Styles for news.html */
+.news-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .news-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 2rem;
-    border-radius: 10px;
-    max-width: 800px;
-    margin: 2rem auto;
 }
 
 .news-container h1 {
     text-align: center;
     color: #006400;
+    margin-bottom: 1rem;
 }
 
 .pdf-viewer {
+    flex-grow: 1;
     width: 100%;
-    height: 600px;
     border: none;
+    min-height: 80vh;
 }
 
