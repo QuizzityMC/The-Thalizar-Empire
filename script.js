@@ -38,12 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check for authentication response
     const urlParams = new URLSearchParams(window.location.search);
     const authStatus = urlParams.get('auth');
+    const authErrorMessage = urlParams.get('message');
+    
     if (authStatus === 'success') {
         authMessage.textContent = 'Authentication successful!';
         authMessage.style.color = 'green';
         authMessage.style.display = 'block';
     } else if (authStatus === 'error') {
-        authMessage.textContent = 'Authentication failed. Please try again.';
+        authMessage.textContent = 'Authentication failed: ' + (authErrorMessage || 'Unknown error');
         authMessage.style.color = 'red';
         authMessage.style.display = 'block';
     }
