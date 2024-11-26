@@ -38,12 +38,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check for authentication response
     const urlParams = new URLSearchParams(window.location.search);
     const authStatus = urlParams.get('auth');
+    const authUsername = urlParams.get('username');
+    const authEmail = urlParams.get('email');
     const authErrorMessage = urlParams.get('message');
     
-    if (authStatus === 'success') {
-        authMessage.textContent = 'Authentication successful!';
+    if (authStatus === 'success' && authUsername && authEmail) {
+        authMessage.textContent = `Authentication successful! Welcome, ${authUsername}!`;
         authMessage.style.color = 'green';
         authMessage.style.display = 'block';
+        loginForm.style.display = 'none';
+        portalActions.style.display = 'block';
+        welcomeMessage.textContent = `Welcome, ${authUsername}!`;
+        document.getElementById('username').value = authUsername;
+        document.getElementById('email').value = authEmail;
     } else if (authStatus === 'error') {
         authMessage.textContent = 'Authentication failed: ' + (authErrorMessage || 'Unknown error');
         authMessage.style.color = 'red';
